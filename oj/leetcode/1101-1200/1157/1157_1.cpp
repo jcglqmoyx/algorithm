@@ -14,16 +14,12 @@ public:
         const int length = right - left + 1;
 
         for (int i = 0; i < k; ++i) {
-            int x = arr[rand(arr.size())];
+            int x = arr[left + rand(length)];
             vector<int>&pos = location[x];
             const auto cnt = ranges::upper_bound(pos.begin(), pos.end(), right) - ranges::lower_bound(
                                  pos.begin(), pos.end(), left);
-            if (cnt >= threshold) {
-                return x;
-            }
-            if (cnt * 2 >= length) {
-                return -1;
-            }
+            if (cnt >= threshold) return x;
+            if (cnt * 2 >= length) return -1;
         }
 
         return -1;
@@ -31,12 +27,12 @@ public:
 
 private:
     static constexpr int k = 20;
+    mt19937 gen{random_device{}()};
     const vector<int>&arr;
-
     unordered_map<int, vector<int>> location;
 
-    static int rand(auto max) {
-        mt19937 gen(random_device{}());
+
+    int rand(auto max) {
         uniform_int_distribution<> distrib(0, max);
         return distrib(gen);
     }
