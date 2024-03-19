@@ -13,7 +13,7 @@ public:
     int query(const int left, const int right, const int threshold) {
         const int length = right - left + 1;
 
-        for (int i = 0; i < k; ++i) {
+        for (int _ = 0; _ < k; _++) {
             int x = arr[left + rand(length)];
             vector<int>&pos = location[x];
             const auto cnt = ranges::upper_bound(pos.begin(), pos.end(), right) - ranges::lower_bound(

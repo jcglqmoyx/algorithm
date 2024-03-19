@@ -8,7 +8,7 @@ struct Node {
     int l, r;
     int val, cnt;
 
-    Node operator+(const Node &node) const {
+    Node operator+(const Node&node) const {
         Node t{min(l, node.l), max(r, node.r)};
         if (val == node.val) {
             t.val = val;
@@ -24,46 +24,42 @@ struct Node {
     }
 } tr[N << 2];
 
+void build(vector<int>&arr, int u, int l, int r) {
+    tr[u] = {l, r};
+    if (l == r) {
+        tr[u].val = arr[l];
+        tr[u].cnt = 1;
+    } else {
+        const int mid = (l + r) >> 1;
+        build(arr, u << 1, l, mid), build(arr, u << 1 | 1, mid + 1, r);
+        tr[u] = tr[u << 1] + tr[u << 1 | 1];
+    }
+}
+
+Node ask(int u, int l, int r) {
+    if (tr[u].l >= l && tr[u].r <= r) return tr[u];
+    int mid = tr[u].l + tr[u].r >> 1;
+    if (l > mid) return ask(u << 1 | 1, l, r);
+    if (r <= mid) return ask(u << 1, l, r);
+    return ask(u << 1, l, r) + ask(u << 1 | 1, l, r);
+}
+
 class MajorityChecker {
-    vector<int> a;
-    vector<vector<int>> s;
-
-    void build(int u, int l, int r) {
-        tr[u] = {l, r};
-        if (l == r) {
-            tr[u].val = a[l];
-            tr[u].cnt = 1;
-        } else {
-            const int mid = (l + r) >> 1;
-            build(u << 1, l, mid), build(u << 1 | 1, mid + 1, r);
-            tr[u] = tr[u << 1] + tr[u << 1 | 1];
-        }
-    }
-
-    Node ask(int u, int l, int r) {
-        if (tr[u].l >= l && tr[u].r <= r) return tr[u];
-        int mid = (tr[u].l + tr[u].r) >> 1;
-        if (l > mid) return ask(u << 1 | 1, l, r);
-        if (r <= mid) return ask(u << 1, l, r);
-        return ask(u << 1, l, r) + ask(u << 1 | 1, l, r);
-    }
+    unordered_map<int, vector<int>> map;
 
 public:
-    explicit MajorityChecker(vector<int> &arr) {
-        a.resize(N);
-        s.resize(N);
+    explicit MajorityChecker(vector<int>&arr) {
         for (int i = 0; i < arr.size(); i++) {
-            a[i] = arr[i];
-            s[arr[i]].push_back(i);
+            map[arr[i]].push_back(i);
         }
-        build(1, 0, N - 1);
+        build(arr, 1, 0, arr.size() - 1);
     }
 
     int query(int left, int right, int threshold) {
         auto t = ask(1, left, right);
-        auto l = lower_bound(s[t.val].begin(), s[t.val].end(), left);
-        auto r = upper_bound(s[t.val].begin(), s[t.val].end(), right);
-        if (r - l >= threshold) return t.val;
+        auto&v = map[t.val];
+        auto cnt = ranges::upper_bound(v.begin(), v.end(), right) - ranges::lower_bound(v.begin(), v.end(), left);
+        if (cnt >= threshold) return t.val;
         return -1;
     }
 };
