@@ -14,7 +14,6 @@ public:
         tr.resize(n + 1);
     }
 
-
     void update(int x) {
         while (x <= n) tr[x] += 1, x += low_bit(x);
     }

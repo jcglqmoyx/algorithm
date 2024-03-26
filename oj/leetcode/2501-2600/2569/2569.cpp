@@ -19,7 +19,6 @@ void push_up(int u) {
 void push_down(int u) {
     auto &l = tr[u << 1], &r = tr[u << 1 | 1];
     if (tr[u].lazy) {
-        tr[u].sum = tr[u].r - tr[u].l + 1 - tr[u].sum;
         l.sum = l.r - l.l + 1 - l.sum, r.sum = r.r - r.l + 1 - r.sum;
         l.lazy = !l.lazy, r.lazy = !r.lazy;
         tr[u].lazy = false;
