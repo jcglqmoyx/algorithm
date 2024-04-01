@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-    int maxSelectedElements(vector<int> &nums) {
+    static int maxSelectedElements(vector<int> &nums) {
         sort(nums.begin(), nums.end());
         unordered_map<int, int> f;
         for (int x: nums) {
