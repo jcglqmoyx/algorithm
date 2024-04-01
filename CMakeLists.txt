@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.27)
 project(algorithm)
 
 set(CMAKE_CXX_STANDARD 26)
@@ -43,4 +43,12 @@ add_executable(algorithm main.cpp
         oj/leetcode/2901-3000/2977/2977.cpp
         oj/leetcode/3001-3100/3083/3083.cpp
         oj/leetcode/2201-2300/2286/2286.cpp
+        oj/leetcode/2901-3000/2952/2952.cpp
+        oj/leetcode/901-1000/992/992.cpp
+        oj/leetcode/301-400/331/331.cpp
+        oj/leetcode/3001-3100/3099/3099.cpp
+        oj/leetcode/3001-3100/3100/3100.cpp
+        oj/leetcode/3101-3200/3101/3101.cpp
+        oj/leetcode/2801-2900/2810/2810.cpp
+        oj/leetcode/1-100/58/58.cpp
 )
