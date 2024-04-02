@@ -32,17 +32,13 @@ public:
         memset(f, -0x3f, sizeof f);
         f[0][0] = 0;
         for (int i = 1; i <= nums.size(); i++) {
-            long long g[k + 1][2];
-            memset(g, -0x3f, sizeof g);
-            g[0][0] = 0;
-            for (int j = 1; j <= min(i, k); j++) {
+            for (int j = min(i, k); j >= 1; j--) {
                 long long x = nums[i - 1];
-                g[j][0] = max(f[j][0], f[j][1]);
+                f[j][0] = max(f[j][0], f[j][1]);
 
                 long long t = x * (k - j + 1) * (j & 1 ? 1 : -1);
-                g[j][1] = max(max(f[j - 1][0], f[j - 1][1]) + t, f[j][1] + t);
+                f[j][1] = max(max(f[j - 1][0], f[j - 1][1]) + t, f[j][1] + t);
             }
-            memcpy(f, g, sizeof g);
         }
         return max(f[k][0], f[k][1]);
     }
