@@ -36,6 +36,7 @@ public:
         };
         for (int i = 1; i <= n; i++) {
             for (int j = i + 1; j <= n; j++) {
+                if (n - (j - i + 1) < k - 2) continue;
                 res = (res + helper(i, j, nums[j - 1] - nums[i - 1])) % MOD;
             }
         }
