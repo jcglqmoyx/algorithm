@@ -10,11 +10,12 @@ public:
         vector<pair<ll, ll>> t;
         unordered_map<ll, ll> memo;
         for (int x: coins) {
-            for (auto [a, c]: memo) {
+            t.reserve(memo.size());
+            for (auto &[a, c]: memo) {
                 long long a0 = lcm(a, x);
                 if (a0 <= r) t.emplace_back(a0, -c);
             }
-            for (auto [a, c]: t) {
+            for (auto &[a, c]: t) {
                 memo[a] += c;
             }
             t.clear();
