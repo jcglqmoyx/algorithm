@@ -64,27 +64,19 @@ public:
 
         memset(f, 0x3f, sizeof(int) * (n + 1));
         f[0] = 0;
-        for (int s = INT32_MAX, i = 0; i < n; i++) {
-            s &= nums[i];
-            if (s == andValues[0]) {
-                f[i + 1] = nums[i];
-            }
-        }
 
-        build(1, 0, n);
-
-        for (int i = 2; i <= m; i++) {
+        for (int i = 1; i <= m; i++) {
+            build(1, 0, n);
             for (int j = i; j <= n; j++) {
+                g[j] = INF;
+                if (nums[j - 1] < andValues[i - 1]) continue;
                 int l = i - 1, r = j - 1;
                 while (l < r) {
                     int mid = (l + r + 1) >> 1;
                     if (and_sum(mid, j - 1) > andValues[i - 1]) r = mid - 1;
                     else l = mid;
                 }
-                if (and_sum(l, j - 1) < andValues[i - 1]) {
-                    g[j] = INF;
-                    continue;
-                }
+                if (and_sum(l, j - 1) != andValues[i - 1]) continue;
                 int right = l;
                 l = i - 1, r = j - 1;
                 while (l < r) {
@@ -96,7 +88,6 @@ public:
                 g[j] = query(1, left, right) + nums[j - 1];
             }
             memcpy(f, g, sizeof(int) * (n + 1));
-            if (i < m) build(1, 0, n);
         }
         return f[n] >= INF / 2 ? -1 : f[n];
     }
