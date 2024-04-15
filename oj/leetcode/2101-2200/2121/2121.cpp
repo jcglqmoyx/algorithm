@@ -13,7 +13,7 @@ public:
         }
         vector<ll> res(n);
         for (auto &[k, v]: map) {
-            auto m = v.size();
+            int m = v.size();
             ll l = 0, r = 0;
             for (int p: v) r += p;
             for (int i = 0; i < m; i++) {
