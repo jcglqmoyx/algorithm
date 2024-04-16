@@ -58,7 +58,7 @@ public:
                 q2.push(nums[i]);
                 if (q1.sum() < e) {
                     min_sum = INF;
-                    while (q1.size() && q1.sum() < e) q2.pop(i);
+                    while (q1.size() && q1.sum() < e) q1.pop(i);
                 }
                 while (q2.size() && q2.sum() < e) q2.pop(i);
                 while (q2.size() && q2.sum() == e) {
