@@ -39,7 +39,11 @@ public:
             }
         }
         int res = -1, m = 0;
-        sort(initial.begin(), initial.end());
+        vector<bool> st(n);
+        for (auto x: initial) st[x] = true;
+        for (int idx = 0, i = 0; i < n; i++) {
+            if (st[i]) initial[idx++] = i;
+        }
         queue<int> q;
         for (int x: initial) q.emplace(x);
         while (!q.empty()) {
