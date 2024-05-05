@@ -20,9 +20,9 @@ ___
 
 ### Input
 
-The input is given from Standard Input in the following format:
-$N$<br>
-$A_1 \ A_2 \ ... \ A_N$<br>
+The input is given from Standard Input in the following format: <br>
+$N$ <br>
+$A_1 \ A_2 \ ... \ A_N$ <br>
 
 ___
 
