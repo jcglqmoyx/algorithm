@@ -29,7 +29,7 @@ N
 $A_1\ B_1$<br> 
 $A_2\ B_2$<br>
 <html>&#x22ee;</html><br>
-$A_N\ B_N$
+$A_N \ B_N$
 
 
 ___
