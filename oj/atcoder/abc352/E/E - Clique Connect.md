@@ -24,13 +24,13 @@ ___
 
 The input is given from Standard Input in the following format:
 
-$N \ M$
-$K_1 \ C_1$
-$A_{1,1} \ A_{1,2} \ ... \ A_{1,K_1}$
-$K_2 \ C_2$
-$A_{2,1} \ A_{2,2} \ ... \ A_{2,K_2}$
-<html>&#x22ee;</html>
-$K_M \ C_M$
+$N \ M$<br>
+$K_1 \ C_1$<br>
+$A_{1,1} \ A_{1,2} \ ... \ A_{1,K_1}$<br>
+$K_2 \ C_2$<br>
+$A_{2,1} \ A_{2,2} \ ... \ A_{2,K_2}$<br>
+<html>&#x22ee;</html><br>
+$K_M \ C_M$<br>
 $A_{M,1} \ A_{M,2} \ ... \ A_{M,K_M}$
 
 ### Output
