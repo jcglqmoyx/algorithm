@@ -25,7 +25,7 @@ ___
 The input is given from Standard Input in the following format:
 
 
-N
+N  
 $A_1\ B_1$
 $A_1\ B_1$
 
