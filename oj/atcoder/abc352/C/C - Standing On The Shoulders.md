@@ -28,7 +28,9 @@ The input is given from Standard Input in the following format:
 N
 $A_1\ B_1$
 $A_1\ B_1$
+
 <html>&#x22ee;</html>
+
 $A_N\ B_N$
 
 
