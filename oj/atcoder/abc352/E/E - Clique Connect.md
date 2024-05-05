@@ -13,7 +13,7 @@ After performing all $M$ operations, determine whether $G$ is connected. If it i
 -   $2 \leq N \leq 2 \times 10^5$
 -   $1 \leq M \leq 2 \times 10^5$
 -   $2 \leq K_i \leq N$
--   $\\sum_{i=1}^{M1} K_i \leq 4 \times 10^5$
+-   $\\sum_{i=1}^{M} K_i \leq 4 \times 10^5$
 -   $1 \leq A_{i,1} < A_{i,2} < \dots < A_{i,K_i} \leq N$
 -   $1 \leq C_i \leq 10^9$
 -   All input values are integers.
