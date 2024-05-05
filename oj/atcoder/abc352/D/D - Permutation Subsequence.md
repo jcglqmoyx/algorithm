@@ -23,7 +23,7 @@ ___
 
 The input is given from Standard Input in the following format:
 
-$N \ K$
+$N \ K$<br>
 $P_1 \ P_2 \ ... \ P_N$
 
 ### Output
