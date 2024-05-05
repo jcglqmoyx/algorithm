@@ -27,9 +27,7 @@ ___
 
 ### Input
 
-The input is given from Standard Input in the following format: <br>
-
-
+The input is given from Standard Input in the following format:  
 
 $N \ M$<br>  
 $A_1 \ B_1 \ C_1$<br>  
