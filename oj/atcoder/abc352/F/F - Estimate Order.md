@@ -27,7 +27,7 @@ ___
 
 ### Input
 
-The input is given from Standard Input in the following format:
+The input is given from Standard Input in the following format:<br>
 
 
 $N \ M$<br>  
