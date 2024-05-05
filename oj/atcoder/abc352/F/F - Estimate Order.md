@@ -29,6 +29,7 @@ ___
 
 The input is given from Standard Input in the following format:
 
+
 $N \ M$<br>  
 $A_1 \ B_1 \ C_1$<br>  
 $A_2 \ B_2 \ C_2$<br>
