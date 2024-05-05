@@ -203,9 +203,10 @@ add_executable(algorithm main.cpp
         oj/leetcode/1901-2000/1976/1976_2.cpp
         oj/leetcode/1601-1700/1652/1652.cpp
         oj/leetcode/201-300/237/237.cpp
-        oj/atcoder/abc352/A/abc352_a.cpp
-        oj/atcoder/abc352/B/abc352_b.cpp
-        oj/atcoder/abc352/C/abc352_c.cpp
-        oj/atcoder/abc352/D/abc352_d_1.cpp
-        oj/atcoder/abc352/D/abc352_d_2.cpp
+        oj/atcoder/abc352/A/a.cpp
+        oj/atcoder/abc352/B/b.cpp
+        oj/atcoder/abc352/C/c.cpp
+        oj/atcoder/abc352/D/d_1.cpp
+        oj/atcoder/abc352/D/d_2.cpp
+        oj/atcoder/abc352/E/e.cpp
 )
