@@ -209,4 +209,5 @@ add_executable(algorithm main.cpp
         oj/atcoder/abc352/D/d_1.cpp
         oj/atcoder/abc352/D/d_2.cpp
         oj/atcoder/abc352/E/e.cpp
+        oj/atcoder/abc352/F/f.cpp
 )
