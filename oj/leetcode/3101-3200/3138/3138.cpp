@@ -5,14 +5,24 @@ using namespace std;
 class Solution {
 public:
     int minAnagramLength(string s) {
-        unordered_map<char, int> mp;
-        for (char c: s) mp[c]++;
         int n = s.size();
-        int g = -1;
-        for (auto &[_, v]: mp) {
-            if (g == -1) g = v;
-            else g = gcd(g, v);
+        for (int k = 1; k * 2 <= n; k++) {
+            if (n % k) continue;
+            vector<int> cnt(26);
+            for (int j = 0; j < k; j++) cnt[s[j] - 'a']++;
+            bool flag = true;
+            for (int i = k; i < n; i += k) {
+                vector<int> t(26);
+                for (int j = i; j < i + k; j++) {
+                    t[s[j] - 'a']++;
+                }
+                if (cnt != t) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) return k;
         }
-        return n / g;
+        return n;
     }
 };
