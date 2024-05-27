@@ -8,7 +8,7 @@ const int N = 50010;
 
 struct Node {
     int l, r;
-    int f00, f01, f10, f11;
+    unsigned int f00, f01, f10, f11;
 } tr[N << 2];
 
 void push_up(int u) {
@@ -46,7 +46,7 @@ public:
     int maximumSumSubsequence(vector<int> &nums, vector<vector<int>> &queries) {
         int n = nums.size();
         build(nums, 1, 0, n - 1);
-        int res = 0;
+        unsigned int res = 0;
         for (auto &q: queries) {
             update(1, q[0], q[1]);
             res = (res + tr[1].f11) % MOD;
