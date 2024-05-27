@@ -272,4 +272,15 @@ add_executable(algorithm main.cpp
         oj/leetcode/101-200/140/140.cpp
         oj/leetcode/2901-3000/2903/2903.cpp
         oj/leetcode/2801-2900/2861/2861.cpp
+        oj/leetcode/1701-1800/1738/1738.cpp
+        oj/leetcode/501-600/552/552.cpp
+        oj/leetcode/3101-3200/3158/3158.cpp
+        oj/leetcode/3101-3200/3159/3159.cpp
+        oj/leetcode/3101-3200/3160/3160.cpp
+        oj/leetcode/3101-3200/3161/3161.cpp
+        oj/leetcode/3101-3200/3162/3162.cpp
+        oj/leetcode/3101-3200/3164/3164.cpp
+        oj/leetcode/3101-3200/3163/3163.cpp
+        oj/leetcode/1601-1700/1608/1608.cpp
+        oj/leetcode/2001-2100/2028/2028.cpp
 )
