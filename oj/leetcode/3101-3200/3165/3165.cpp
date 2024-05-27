@@ -22,7 +22,7 @@ void push_up(int u) {
 void build(vector<int> &nums, int u, int l, int r) {
     tr[u] = {l, r};
     if (l == r) {
-        tr[u].f11 = nums[l];
+        tr[u].f11 = max(nums[l], 0);
     } else {
         int mid = (l + r) >> 1;
         build(nums, u << 1, l, mid);
@@ -32,7 +32,7 @@ void build(vector<int> &nums, int u, int l, int r) {
 }
 
 void update(int u, int p, int v) {
-    if (tr[u].l == tr[u].r) tr[u].f11 = v;
+    if (tr[u].l == tr[u].r) tr[u].f11 = max(v, 0);
     else {
         int mid = (tr[u].l + tr[u].r) >> 1;
         if (p <= mid) update(u << 1, p, v);
@@ -49,7 +49,7 @@ public:
         int res = 0;
         for (auto &q: queries) {
             update(1, q[0], q[1]);
-            res = (res + max(max(tr[1].f00, tr[1].f01), max(tr[1].f10, tr[1].f11))) % MOD;
+            res = (res + tr[1].f11) % MOD;
         }
         return res;
     }
