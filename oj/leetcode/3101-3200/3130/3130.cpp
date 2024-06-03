@@ -2,16 +2,15 @@
 
 using namespace std;
 
+int f[1005][1005][2];
+
 class Solution {
 public:
     int numberOfStableArrays(int zero, int one, int limit) {
         const int MOD = 1e9 + 7;
 
-        int f[zero + 1][one + 1][2];
-        memset(f, 0, sizeof f);
-
-        for (int i = 1; i <= min(limit, zero); i++) f[i][0][0] = 1;
-        for (int j = 1; j <= min(limit, one); j++) f[0][j][1] = 1;
+        for (int i = 1; i <= zero; i++) f[i][0][0] = i <= limit;
+        for (int j = 1; j <= one; j++) f[0][j][1] = j <= limit;
 
         for (int i = 1; i <= zero; i++) {
             for (int j = 1; j <= one; j++) {
