@@ -21,11 +21,11 @@ int diameter(vector<vector<int>> &edges) {
         add(edge[0], edge[1]);
         add(edge[1], edge[0]);
     }
-    int res = 0, diameter = 0;
+    int node = 0, diameter = 0;
     function<void(int, int, int)> dfs = [&](int u, int p, int d) {
         if (d > diameter) {
             diameter = d;
-            res = u;
+            node = u;
         }
         for (int i = h[u]; ~i; i = ne[i]) {
             int j = e[i];
@@ -35,7 +35,7 @@ int diameter(vector<vector<int>> &edges) {
         }
     };
     dfs(0, -1, 0);
-    dfs(res, -1, 0);
+    dfs(node, -1, 0);
     return diameter;
 }
 
