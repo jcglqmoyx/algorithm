@@ -16,14 +16,11 @@ public:
             while ((s1[idx1] | s2[idx2]) >= k) {
                 res = min(res, idx1 + idx2);
                 if (!idx1) {
-                    idx1 = (idx2 + 1) >> 1;
-                    for (int j = 1; j <= idx1; j++) {
-                        s1[j] = s1[j - 1] | nums[i - idx2 + idx1 + 1 - j];
-                    }
-                    idx2 -= idx1;
                     for (int j = 1; j <= idx2; j++) {
-                        s2[j] = s2[j - 1] | nums[i - idx2 + j];
+                        s1[j] = s1[j - 1] | nums[i - j + 1];
                     }
+                    idx1 = idx2;
+                    idx2 = 0;
                 }
                 idx1--;
             }
