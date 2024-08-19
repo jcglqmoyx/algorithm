@@ -13,9 +13,7 @@ public:
         for (int i = 1; i < n; i++) {
             p10[i] = p10[i - 1] * 10 % k;
         }
-        string ans;
-        ans.resize(n, 0);
-
+        string ans(n, 0);
         auto dfs = [&](auto &&dfs, int i, int j) {
             if (i == m) {
                 return j == 0;
@@ -35,7 +33,6 @@ public:
             }
             return false;
         };
-
         dfs(dfs, 0, 0);
         return ans;
     }
