@@ -13,7 +13,7 @@ public:
             s[i] = s[i - 1] + piles[i - 1];
         }
         for (int i = n; i; i--) {
-            for (int j = 1; j <= n; j++) {
+            for (int j = 1; j <= n / 2 + 1; j++) {
                 for (int k = 1; i + k - 1 <= n && k <= j * 2; k++) {
                     f[i][j] = max(f[i][j], s[n] - s[i - 1] - f[i + k][max(k, j)]);
                 }
