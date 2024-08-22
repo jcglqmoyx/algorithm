@@ -5,14 +5,14 @@ using namespace std;
 class Solution {
 public:
     vector<int> maximizeXor(vector<int> &nums, vector<vector<int>> &queries) {
-        int n = nums.size(), m = queries.size();
-        int tr[n << 5][2], idx = 0;
-        int mn[n << 5];
+        auto n = nums.size(), m = queries.size();
+        int tr[n * 31][2], idx = 0;
+        int mn[n * 31];
         memset(tr, 0, sizeof tr);
         memset(mn, 0x3f, sizeof mn);
         auto insert = [&](int x) {
             int p = 0;
-            for (int i = 31; ~i; i--) {
+            for (int i = 30; ~i; i--) {
                 int u = x >> i & 1;
                 if (!tr[p][u]) tr[p][u] = ++idx;
                 p = tr[p][u];
@@ -31,7 +31,7 @@ public:
                 res[it] = -1;
             } else {
                 int num = 0;
-                for (int p = 0, i = 31; ~i; i--) {
+                for (int p = 0, i = 30; ~i; i--) {
                     int u = xi >> i & 1;
                     if (tr[p][!u] && mn[tr[p][!u]] <= mi) {
                         p = tr[p][!u];
