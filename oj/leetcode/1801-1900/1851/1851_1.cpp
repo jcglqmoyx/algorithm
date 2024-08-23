@@ -12,7 +12,7 @@ public:
                 return r - l > t.r - t.l;
             }
         };
-        priority_queue < T > q;
+        priority_queue<T> q;
         for (auto &interval: intervals) {
             q.emplace(interval[0], interval[1]);
         }
