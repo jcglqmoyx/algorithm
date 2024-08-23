@@ -5,6 +5,15 @@ using namespace std;
 class Solution {
     using ll = long long;
 
+    int get_bit_len(ll x) {
+        int len = 0;
+        while (x) {
+            len++;
+            x >>= 1;
+        }
+        return len;
+    }
+
     int power(ll x, ll n, int mod) {
         ll res = 1;
         while (n) {
@@ -16,7 +25,7 @@ class Solution {
     }
 
     // the number of bits in the range[1, x]
-    vector<ll> get(ll x) {
+    vector<ll> get_bits(ll x, int m) {
         ll temp = x;
         vector<int> v;
         while (temp) {
@@ -24,7 +33,7 @@ class Solution {
             temp >>= 1;
         }
         int n = v.size();
-        vector<ll> res(50);
+        vector<ll> res(m);
         if (x == 0) return res;
         reverse(v.begin(), v.end());
         ll left = 0;
@@ -49,17 +58,17 @@ public:
         auto m = queries.size();
         vector<int> res(m);
         for (int i = 0; i < m; i++) {
-            ll from = queries[i][0], to = queries[i][1] + 1, mod = queries[i][2];
+            ll from = queries[i][0], to = queries[i][1] + 1, mod = queries[i][2], len = get_bit_len(to);
             ll l = 0, r = to;
             while (l < r) {
                 ll mid = (l + r + 1) >> 1;
-                auto t = get(mid);
+                auto t = get_bits(mid, len);
                 if (accumulate(t.begin(), t.end(), 0LL) <= to) l = mid;
                 else r = mid - 1;
             }
-            auto t = get(l);
+            auto t = get_bits(l, len);
             ll tot = accumulate(t.begin(), t.end(), 0LL);
-            for (int u = 0; u < 50 && to > tot; u++) {
+            for (int u = 0; u < len && to > tot; u++) {
                 if ((l + 1) >> u & 1) {
                     t[u]++;
                     to--;
@@ -68,24 +77,24 @@ public:
             l = 0, r = from;
             while (l < r) {
                 ll mid = (l + r + 1) >> 1;
-                auto t = get(mid);
+                auto t = get_bits(mid, len);
                 if (accumulate(t.begin(), t.end(), 0LL) <= from) l = mid;
                 else r = mid - 1;
             }
 
-            auto s = get(l);
-            for (int u = 0; u < 50; u++) {
+            auto s = get_bits(l, len);
+            for (int u = 0; u < len; u++) {
                 t[u] -= s[u];
             }
             tot = accumulate(s.begin(), s.end(), 0LL);
-            for (int u = 0; u < 50 && from > tot; u++) {
+            for (int u = 0; u < len && from > tot; u++) {
                 if ((l + 1) >> u & 1) {
                     t[u]--;
                     from--;
                 }
             }
             ll p = 1;
-            for (int u = 0; u < 50; u++) {
+            for (int u = 0; u < len; u++) {
                 if (t[u]) {
                     p = p * power((1LL << u) % mod, t[u], mod) % mod;
                 }
