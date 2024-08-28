@@ -14,12 +14,12 @@ public:
                 if (grid1[i][j] && grid2[i][j]) {
                     q.emplace(i, j);
                     bool ok = true;
+                    grid2[i][j] = 0;
                     while (!q.empty()) {
                         auto t = q.front();
                         q.pop();
                         int x = t.first, y = t.second;
                         if (!grid1[x][y]) ok = false;
-                        grid2[x][y] = 0;
                         for (int u = 0; u < 4; u++) {
                             int a = x + dx[u], b = y + dy[u];
                             if (a >= 0 && a < n && b >= 0 && b < m && grid2[a][b]) {
