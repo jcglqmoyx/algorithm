@@ -1,4 +1,5 @@
 import time
+import random
 
 import requests
 
@@ -47,13 +48,6 @@ profiles = [
         'Safari',
         'denmark_aksel_matias@proton.me',
         'fastfouriertransform12',
-    ],
-    [
-        'csrftoken=1uPTXqQXE7cPGcXPSlabZZR0CNu7b3EeIW4Uf17H99PGX5723PWabBLqjpqzaL3t; cf_clearance=kv4aNrs5y3M6i4vO1.t7e8jTlktxkXoMEaINA81AcbU-1725209385-1.2.1.1-R5BhkN9iHYJp8Jtck3GwFutdcH6bajlE_iJh.rxb3Ot1tR1vVOwiTo1QbZEQCQSxvXmxuizVDrk.OoaTwL9FauJKiUH2v5jsx84MEdiQH0R_YRm4XZ112XFnKS1lt9Clr0VWkd7nPXad86083Q7YqnMXKtd67DbNBxMZfaJ4R0dxKHeTX7FwBBTd9OnDb.IPwzX0rM7AA_chUjEQN4AxPGytwFLLjZlGZiof5j_GUxE.vYyWuunDNBf.x8OvgKDiAwcCRw4HIvnCX5Vd4QWfDQthbUpHnFo.3g8pYvYxFFCs0KwSmgJ._n2Dsxg4Rww8nOHGMDkQSKZa17GuU_RjI1MgoBxFDrZkT5VsuvGZlLidq8k8lCtXGqmemXjtODuLymYfPkmNQQWQWQ8OeMFmT.YoVeYvP33lSeT.vsp_WRQTkl7x64d78Hx_BAHxnTGQ; __cf_bm=coZVUvZk_i8ApP5KFJ_i6dC0LfFlvzmQpU_E4x8flno-1725209397-1.0.1.1-sBzNTTppwSs8NpW6hHM6vYF.nMlJpnqh0CwIhXlYPROZQ5jYL1VrD62DjcCVXblheG6oRF5V7Vk1RiJbAqkFbQ; LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTQ1MjAxNTgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyYmM1Njg0MmYxMzlmYjdmZmI5MGMxYzZhNzRlNWY3ZDg3NjIxMGNjYTkzNTJmMDc1ZTc3MzAxNjNkYzVjMjE0IiwiaWQiOjE0NTIwMTU4LCJlbWFpbCI6InB5dGhvbmNwcGphdmFAcHJvdG9ubWFpbC5jb20iLCJ1c2VybmFtZSI6InB5dGhvbmNwcGphdmEiLCJ1c2VyX3NsdWciOiJweXRob25jcHBqYXZhIiwiYXZhdGFyIjoiaHR0cHM6Ly9hc3NldHMubGVldGNvZGUuY29tL3VzZXJzL2RlZmF1bHRfYXZhdGFyLmpwZyIsInJlZnJlc2hlZF9hdCI6MTcyNTIwOTM5NywiaXAiOiIyNDA0OmEzYzA6NjowOjQ0OTc6MmZmOmZlOGM6ZWM2IiwiaWRlbnRpdHkiOiJkZDc4ODc4YmViYzBlNmFmZmY4MGJlOTY1MTY1MTFkNyIsImRldmljZV93aXRoX2lwIjpbIjVhMDhhNGVhNTE3YzU3ZDc4NTFkYzhkZjYyM2NhOWJkIiwiMjQwNDphM2MwOjY6MDo0NDk3OjJmZjpmZThjOmVjNiJdLCJzZXNzaW9uX2lkIjo3MDMzMjY0NiwiX3Nlc3Npb25fZXhwaXJ5IjoxMjA5NjAwfQ.1yAvBB1QSRqmDy29w_npx0-lxoeqFBmbPBTYhZphSNg; ip_check=(false, "2404:a3c0:6:0:4497:2ff:fe8c:ec6"); _dd_s=rum=0&expire=1725210305148; INGRESSCOOKIE=cef92d526a50e7ccbdd1b06730aa5eae|8e0876c7c1464cc0ac96bc2edceabd27',
-        '1uPTXqQXE7cPGcXPSlabZZR0CNu7b3EeIW4Uf17H99PGX5723PWabBLqjpqzaL3t',
-        'Min',
-        'pythoncppjava@protonmail.com',
-        'pythoncppjava',
     ],
     [
         'gid=GA1.2.628333768.1725211176; ip_check=(false, "2404:a3c0:6:0:4497:2ff:fe8c:ec6"); gr_user_id=80828ea6-f194-4cbf-a480-1242b0e22035; 87b5a3c3f1a55520_gr_session_id=5dd772df-0f7c-4c2e-9e9f-d3e3c8675525; 87b5a3c3f1a55520_gr_session_id_sent_vst=5dd772df-0f7c-4c2e-9e9f-d3e3c8675525; cf_clearance=e3vj76UHhBMKbR.IYGjIzn_aOskIYU1yavFfpkP2N4g-1725211790-1.2.1.1-sgzNIjdfrGNYCuHBcvO5TXQ1ye_XcSt5cOh_wDBCKsoUD7WtlkBAVJ1zwg7UpQTNknPyhwsmy57_MVXDivZrsWxPtmT9ZbSsTa9YqDZZU6vC627sctK__V2XKpZfAnqjzxAJrD4n5x4waokBI4e426JJ.K64ZTaZPfpkl5SO8E6B746UpvGrSNNAnW7YEhJi_PSd878OeoLvT.h8NL7xyMK7MUdCRR0ZBwBsdAYXtyXFRxdQftIPd3Jp9dD36JdDmDorJkYDMz3nZgy2DSl6vuC.N4jF7AGam7OpKxf4W6ZUFCr.djGtSQ.WB4Zw0CRgmKsp.UxZUiZ5mw92qxrWFRqPwoLELf_u20cisLKrWZUVuDv5zgHhQVQ.raXLCzJT2hmUsDIKsYQ3R.qsvgWI.ONrNHWSzBOPwOHJfI0qFLGsE9.o_WE3FNCDCt9zIlqc; __cf_bm=YXg9mE2ymV.nbU2UDJtaGUkv0RSg4T6xljslZa.aZJU-1725211790-1.0.1.1-oFi8dcqWbFXrNFJEUufHhSDXQ61YFQCVv7XPuNWIDhweOTzlOwUKsmq2ZzDATpVEyY6tw6UbIBqnH4FAK0zqNQ; csrftoken=kUgLG6qoLB0iLXLQlJgZ69U9eeJG2eCSis7d8Vxi7vUroq88Idzq6B26VrCOpJPc; LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X3ZlcmlmaWVkX2VtYWlsIjpudWxsLCJhY2NvdW50X3VzZXIiOiI4cHlhayIsIl9hdXRoX3VzZXJfaWQiOiIxNDY0Nzc3MiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjA4YWRkZTI4MDAyYTdjZmM3NDdiNGE3ZWI0MjhkOTdiZTk2M2MzOGMzYTI0MmMzZDJlOWI0Yjc5YjBkZWIxYjEiLCJpZCI6MTQ2NDc3NzIsImVtYWlsIjoieXV0b190YW5ha2FfanBAcHJvdG9ubWFpbC5jb20iLCJ1c2VybmFtZSI6Inl1dG9fdGFuYWthX2pwIiwidXNlcl9zbHVnIjoieXV0b190YW5ha2FfanAiLCJhdmF0YXIiOiJodHRwczovL2Fzc2V0cy5sZWV0Y29kZS5jb20vdXNlcnMvZGVmYXVsdF9hdmF0YXIuanBnIiwicmVmcmVzaGVkX2F0IjoxNzI1MjExOTIyLCJpcCI6IjM4LjYwLjE5MS42NCIsImlkZW50aXR5IjoiZmUwNjczZjJhNDhkMDQ3YjkxMmIyN2UyYTBjMDJmOWYiLCJkZXZpY2Vfd2l0aF9pcCI6WyJiNTk3NzU0YmVkNmY1ZDQ2OTA3NmE4Y2FkODJhZmNmNSIsIjM4LjYwLjE5MS42NCJdLCJzZXNzaW9uX2lkIjo3MTAwNTk4NX0.sEmdJurHp_QN24qcJXD42FZUNZgbo9AhY-h3kvBLaxs; INGRESSCOOKIE=5b93de1bbdae6b829f1a10da000df9a2|8e0876c7c1464cc0ac96bc2edceabd27; 87b5a3c3f1a55520_gr_last_sent_sid_with_cs1=5dd772df-0f7c-4c2e-9e9f-d3e3c8675525; 87b5a3c3f1a55520_gr_last_sent_cs1=yuto_tanaka_jp; _gat=1; 87b5a3c3f1a55520_gr_cs1=yuto_tanaka_jp; _ga=GA1.1.594564582.1725211173; _ga_CDRWKZTDEX=GS1.1.1725211172.1.1.1725212156.36.0.0; _dd_s=rum=0&expire=1725213045428',
@@ -402,7 +396,7 @@ def submit():
             'json: %s.' % resp.json()
         )
         if i + 1 < len(profiles):
-            time.sleep(10)
+            time.sleep(random.randint(5, 15))
 
 
 if __name__ == '__main__':
