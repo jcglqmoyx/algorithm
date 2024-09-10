@@ -22,10 +22,10 @@ public:
             }
         }
         ll res = 0;
-        for (int i = 1; i + 2 < n; i++) {
-            for (int j = i + 1; j + 1 < n; j++) {
-                if (nums[i] > nums[j]) {
-                    res += l[i - 1][nums[j]] * r[j + 1][nums[i]];
+        for (int j = 1; j + 2 < n; j++) {
+            for (int k = j + 1; k + 1 < n; k++) {
+                if (nums[j] > nums[k]) {
+                    res += l[j - 1][nums[k]] * r[k + 1][nums[j]];
                 }
             }
         }
