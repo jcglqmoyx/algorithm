@@ -396,7 +396,7 @@ def submit():
             'json: %s.' % resp.json()
         )
         if i + 1 < len(profiles):
-            time.sleep(random.randint(5, 15))
+            time.sleep(random.randint(20, 30))
 
 
 if __name__ == '__main__':
