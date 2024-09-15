@@ -31,11 +31,12 @@ public:
         };
         dp(dp, (1 << n) - 1);
         vector<int> res;
-        for (int mask = (1 << n) - 1; mask;) {
-            for (int i = 0; i < m; i++) {
+        for (int start = 0, mask = (1 << n) - 1; mask;) {
+            for (int i = start; i < m; i++) {
                 if ((mask & p[i]) && f[mask] == f[mask ^ (mask & p[i])] + 1) {
                     mask ^= mask & p[i];
                     res.emplace_back(i);
+                    start = i + 1;
                     break;
                 }
             }
