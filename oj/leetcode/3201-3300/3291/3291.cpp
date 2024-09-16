@@ -56,22 +56,22 @@ public:
             insert(w);
         }
         build();
-        int n = target.size();
+        auto n = target.size();
         memset(f, 0, sizeof(int) * n);
         for (int i = 0, p = 0; i < n; i++) {
             int t = target[i] - 'a';
             p = tr[p][t];
             int l = len[p];
-            if (l != 0) {
+            if (l) {
                 f[i - l + 1] = max(f[i - l + 1], l);
             }
         }
         int res = 0;
         for (int end = 0, mx = 0, i = 0; i < n; i++) {
             mx = max(mx, i + f[i]);
-            if (i == end) end = mx, res++;
             if (mx > n) break;
             if (mx == i) return -1;
+            if (i == end) end = mx, res++;
         }
         return res;
     }
