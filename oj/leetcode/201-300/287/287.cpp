@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-    int findDuplicate(vector<int>&nums) {
+    int findDuplicate(vector<int> &nums) {
         int cur = 0;
         while (true) {
             const int ne = nums[cur];
