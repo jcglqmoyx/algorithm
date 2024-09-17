@@ -1,10 +1,10 @@
-import time
 import random
+import time
 
 import requests
 
 # 1 there must be a '/' in the end of the link!
-url = 'https://leetcode.com/problems/linked-list-in-binary-tree/submit/'
+url = 'https://leetcode.com/problems/uncommon-words-from-two-sentences/submit/'
 
 profiles = [
     [
@@ -362,7 +362,7 @@ profiles = [
 
 def submit():
     for i in range(0, len(profiles)):
-        if i != 5:
+        if i == 0:
             continue
         headers = {
             'authority': 'leetcode.com',
@@ -381,9 +381,45 @@ def submit():
         payload = {
             'lang': 'cpp',
             # 2
-            'question_id': '1484',
+            'question_id': '920',
             # 3
             'typed_code': '''
+            class Solution {
+public:
+    inline static vector<string> toStringVec(string& s){
+        stringstream ss(s);
+        vector<string> ans;
+        while (!ss.eof()){
+            string tmp;
+            ss>>tmp;
+            ans.push_back(tmp);
+        }
+        ss.clear();
+        return ans;
+    }
+    static vector<string> uncommonFromSentences(string& s1, string& s2) {
+        auto ss1=toStringVec(s1);
+        auto ss2=toStringVec(s2);
+        unordered_map<string, int> freq;
+        freq.reserve(s1.size()+s2.size());
+        for(auto& s: ss1) freq[s]++;
+        for(auto& s: ss2) freq[s]++;
+        vector<string> ans;
+        for(auto& [s,f]: freq){
+            if(f==1) ans.push_back(s);
+        }
+        return ans;
+    }
+};
+
+
+
+auto init = []() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    return 'c';
+}();
                             '''
         }
 
@@ -391,8 +427,8 @@ def submit():
 
         print(
             'idx: %d,' % i,
-            'info: %s,' % profiles[i][2:],
             'status: %d,' % resp.status_code,
+            'info: %s,' % profiles[i][2:],
             'json: %s.' % resp.json()
         )
         if i + 1 < len(profiles):
