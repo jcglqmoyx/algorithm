@@ -19,20 +19,20 @@ public:
                 hat_to_person[id].emplace_back(i);
             }
         }
-        int f[max_hat_id + 1][1 << n];
+        int f[2][1 << n];
         memset(f, 0, sizeof f);
         f[0][0] = 1;
         for (int i = 1; i <= max_hat_id; i++) {
             for (int j = 0; j < 1 << n; j++) {
-                f[i][j] = f[i - 1][j];
+                f[i & 1][j] = f[i & 1 ^ 1][j];
                 for (int id: hat_to_person[i]) {
                     if (j >> id & 1) {
-                        f[i][j] = f[i][j] + f[i - 1][j ^ (1 << id)];
-                        if (f[i][j] > m) f[i][j] -= m;
+                        f[i & 1][j] = f[i & 1][j] + f[i & 1 ^ 1][j ^ (1 << id)];
+                        if (f[i & 1][j] > m) f[i & 1][j] -= m;
                     }
                 }
             }
         }
-        return f[max_hat_id][(1 << n) - 1];
+        return f[max_hat_id & 1][(1 << n) - 1];
     }
 };
