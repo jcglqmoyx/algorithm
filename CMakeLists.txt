@@ -571,4 +571,5 @@ add_executable(algorithm main.cpp
         oj/leetcode/2301-2400/2332/2332.cpp
         oj/leetcode/101-200/179/179.cpp
         oj/leetcode/1601-1700/1655/1655.cpp
+        oj/leetcode/101-200/101/101.cpp
 )
