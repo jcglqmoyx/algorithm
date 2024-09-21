@@ -40,7 +40,7 @@ public:
                 prev = type;
                 mask /= 3;
             }
-            if (in[i] > introvertsCount || ex[i] > extrovertsCount) row_happiness[i] = -inf; // not valid
+            if (in[i] > introvertsCount || ex[i] > extrovertsCount) row_happiness[i] = -inf;
             else f[0][in[i]][ex[i]][i] = row_happiness[i];
         }
 
@@ -63,8 +63,8 @@ public:
         }
 
         for (int i = 1; i < m; i++) {
-            for (int a = 0; a <= introvertsCount; a++) {
-                for (int b = 0; b <= extrovertsCount; b++) {
+            for (int a = 0; a <= min(introvertsCount, (i + 1) * n); a++) {
+                for (int b = 0; b <= min(extrovertsCount, (i + 1) * n - a); b++) {
                     for (int cur = 0; cur < tot; cur++) {
                         if (a < in[cur] || b < ex[cur]) continue;
                         int &t = f[i][a][b][cur];
@@ -77,8 +77,8 @@ public:
         }
         int res = 0;
         for (int i = 1; i < tot; i++) {
-            for (int a = 0; a <= introvertsCount; a++) {
-                for (int b = 0; b <= extrovertsCount; b++) {
+            for (int a = 0; a <= min(introvertsCount, m * n); a++) {
+                for (int b = 0; b <= min(extrovertsCount, m * n - a); b++) {
                     res = max(res, f[m - 1][a][b][i]);
                 }
             }
