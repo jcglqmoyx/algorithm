@@ -14,10 +14,6 @@ vector<int> z_function(string &s, int m) {
         }
         if (i + z[i] - 1 > r) l = i, r = i + z[i] - 1;
     }
-    z[0] = n;
-    for (int i = 0; i < n; i++) {
-        z[i] = min(z[i], m);
-    }
     return z;
 }
 
