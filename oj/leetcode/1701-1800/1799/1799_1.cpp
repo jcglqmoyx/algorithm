@@ -10,27 +10,26 @@ class Solution {
 public:
     int maxScore(vector<int> &nums) {
         auto n = nums.size();
-        int memo[1 << n];
+        int memo[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                memo[(1 << i) | (1 << j)] = gcd(nums[i], nums[j]);
+                memo[i][j] = gcd(nums[i], nums[j]);
             }
         }
         int f[1 << n];
         memset(f, 0, sizeof f);
-        for (int i = 1; i * 2 <= n; i++) {
-            int g[1 << n];
-            memset(g, 0, sizeof g);
-            for (int j = 0; j < 1 << n; j++) {
-                if (__builtin_popcount(j) % 2 == 0) {
-                    for (int k = j; k; k = (k - 1) & j) {
-                        if (__builtin_popcount(k) == 2) {
-                            g[j] = max(g[j], f[j ^ k] + i * memo[k]);
+        for (int i = 0; i < 1 << n; i++) {
+            int cnt = __builtin_popcount(i);
+            if (cnt & 1) continue;
+            for (int j = 0; j < n; j++) {
+                if (i >> j & 1) {
+                    for (int k = j + 1; k < n; k++) {
+                        if (i >> k & 1) {
+                            f[i] = max(f[i], f[i ^ (1 << j) ^ (1 << k)] + cnt / 2 * memo[j][k]);
                         }
                     }
                 }
             }
-            memcpy(f, g, sizeof g);
         }
         return f[(1 << n) - 1];
     }
