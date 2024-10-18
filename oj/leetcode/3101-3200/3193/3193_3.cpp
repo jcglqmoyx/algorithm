@@ -9,6 +9,9 @@ public:
         int cnt[n + 1], m = 0;
         memset(cnt, -1, sizeof cnt);
         for (auto &req: requirements) {
+            if (!req[0] && req[1]) {
+                return 0;
+            }
             m = max(m, req[1]);
             cnt[req[0]] = req[1];
         }
