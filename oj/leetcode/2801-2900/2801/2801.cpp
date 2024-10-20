@@ -6,9 +6,11 @@ const int N = 105;
 const int MOD = 1e9 + 7;
 
 int s[N];
-unordered_map<int, int> memo;
+int memo[10][101];
 
 int init = []() {
+    memset(memo, -1, sizeof memo);
+
     int f[10];
     f[0] = 0;
     fill(f + 1, f + 10, 1);
@@ -29,10 +31,7 @@ int init = []() {
 
 int helper(int start, int n) {
     if (!n) return 1;
-    int key = n * 10 + start;
-    if (memo.contains(key)) {
-        return memo[key];
-    }
+    if (memo[start][n] != -1) return memo[start][n];
     int f[10];
     memset(f, 0, sizeof f);
     f[start] = 1;
@@ -49,7 +48,7 @@ int helper(int start, int n) {
     for (int j = 0; j <= 9; j++) {
         res = (res + f[j]) % MOD;
     }
-    memo[key] = res;
+    memo[start][n] = res;
     return res;
 }
 
@@ -58,9 +57,14 @@ int get(string &limit) {
     int res = n > 1 ? s[n - 1] : 0;
     for (int i = 1, prev = -1; i <= n; i++) {
         int d = limit[i - 1] - '0';
-        for (int j = i == 1; j < d; j++) {
-            if (i > 1 && abs(j - prev) != 1) continue;
-            res = (res + helper(j, n - i)) % MOD;
+        if (i == 1) {
+            for (int j = 1; j < d; j++) {
+                res = (res + helper(j, n - i)) % MOD;
+            }
+        } else {
+            for (int j: {prev - 1, prev + 1}) {
+                if (j >= 0 && j < d) res = (res + helper(j, n - i)) % MOD;
+            }
         }
         if (i > 1 && abs(d - prev) != 1) break;
         if (i == n) res = (res + 1) % MOD;
