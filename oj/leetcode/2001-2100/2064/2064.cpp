@@ -8,16 +8,15 @@ public:
         int l = (int) ((accumulate(quantities.begin(), quantities.end(), 0LL) + n - 1) / n);
         int r = *max_element(quantities.begin(), quantities.end());
         auto check = [&](int mid) {
-            int i = 0, j = 0, m = static_cast<int>(quantities.size());
+            int i = 0, j = 0, m = static_cast<int>(quantities.size()), x;
             for (; j < m; j++) {
-                int x = quantities[j];
+                x = quantities[j];
                 while (i < n && x) {
                     x -= min(x, mid);
                     i++;
                 }
-                if (i == n && x) return false;
             }
-            return i <= n;
+            return i <= n && !x;
         };
         while (l < r) {
             int mid = (l + r) >> 1;
