@@ -18,17 +18,12 @@ public:
         if (!res) {
             return res;
         }
-        for (int prev = -1, i = 0; i < n; i++) {
+        for (int prev = -1, i = 0, j = 0; i < n; i++) {
             if (arr[i] < prev) {
                 break;
             }
-            int lo = i + 1, hi = n;
-            while (lo < hi) {
-                int mid = (lo + hi) >> 1;
-                if (arr[mid] >= arr[i] && r[mid]) hi = mid;
-                else lo = mid + 1;
-            }
-            res = min(res, lo - i - 1);
+            while (j < n && (!r[j] || arr[j] < arr[i])) j++;
+            res = min(res, j - i - 1);
             prev = arr[i];
         }
         return res;
