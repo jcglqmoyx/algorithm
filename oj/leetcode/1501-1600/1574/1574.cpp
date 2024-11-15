@@ -18,7 +18,7 @@ public:
         if (!res) {
             return res;
         }
-        for (int prev = -1, i = 0, j = 0; i < n; i++) {
+        for (int prev = -1, i = 0, j = 1; i < n; i++) {
             if (arr[i] < prev) {
                 break;
             }
